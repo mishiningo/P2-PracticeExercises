@@ -1,15 +1,23 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import ipleiria.pt.*;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Professor professor1 = new Professor("Bruno Horta", 2025200);
+        Professor professor2 = new Professor("Nuno Veiga", 2024300);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Aluno aluno1 = new Aluno("Leonardo Butschowitz", 2025200451);
+        Aluno aluno2 = new Aluno("Martim Martins", 676767);
+
+        Aula aula1 = new Aula("Aula1", 1);
+        Aula aula2 = new Aula("Aula2", 2);
+
+        aula1.adicionarProfessor(professor1);
+        aula2.adicionarProfessor(professor2);
+        aula1.adicionarProfessor(professor2);
+
+        aula1.adicionarAluno(aluno1);
+        aula1.adicionarAluno(aluno2);
+
+        professor1.preencherSumario(aula1, "Aula de P2");
     }
 }
