@@ -2,7 +2,7 @@ package ipleiria.pt.Ficha2;
 import ipleiria.pt.*;
 
 import java.util.LinkedList;
-
+/*
 public class Main_2 {
     public static void main(String[] args) {
             Professor professor1 = new Professor("Marco Ferreira", 1);
@@ -61,3 +61,4 @@ public class Main_2 {
         }
     }
 
+*/

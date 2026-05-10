@@ -40,8 +40,8 @@ public class Aluno {
             this.aulas = new LinkedList<>();
         }
         this.aulas.add(aula);
-        //Linha 88 da class Aula
-        //aula.adicionar(this);
+        //Ver remover(Aluno aluno) em Aula
+        aula.adicionar(this);
     }
 
     public void remover(Aula aula){
@@ -50,11 +50,26 @@ public class Aluno {
             return;
         }
         this.aulas.remove(aula);
-        //Ler linha 88 da class Aula
-        //aula.remover(this);
+        //Ver remover(Aluno aluno) em Aula
+        aula.remover(this);
     }
 
-   public void assinarSumario(StringBuilder sumario){
+    public LinkedList<Aula> getAulas() {
+        return aulas;
+    }
+
+    //Overload de métodos também é uma cena
+    public LinkedList<Aula> getAulas(Horario horario) {
+        LinkedList<Aula> aulasHorario = new LinkedList<>();
+        for(Aula aula : aulas) {
+            if(aula.getHorario().isSobreposto(horario) && horario != null) {
+                aulasHorario.add(aula);
+            }
+        }
+        return aulasHorario;
+    }
+
+    public void assinarSumario(StringBuilder sumario){
         sumario.append(this.nome).append("\n");
     }
 }

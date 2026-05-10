@@ -73,4 +73,22 @@ public class Professor {
         }
         aula.setSumario(stringSumario.toString());
     }
+
+    public LinkedList<Aula> getAulas() {
+        return aulas;
+    }
+
+    //Overload de métodos também é uma cena
+    //Metodo pensado para devolver aulas que sobrepõem com a faixa de tempo dada
+    //Pelo utilizador, e não pelo tempo exato
+
+    public LinkedList<Aula> getAulas(Horario horario) {
+        LinkedList<Aula> aulasHorario = new LinkedList<>();
+        for(Aula aula : aulas) {
+            if(aula.getHorario().isSobreposto(horario)) {
+                aulasHorario.add(aula);
+            }
+        }
+        return aulasHorario;
+    }
 }

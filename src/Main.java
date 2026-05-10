@@ -1,4 +1,4 @@
-import ipleiria.pt.*;
+/*import ipleiria.pt.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,3 +21,5 @@ public class Main {
         professor1.preencherSumario(aula1, "Aula de P2");
     }
 }
+
+ */

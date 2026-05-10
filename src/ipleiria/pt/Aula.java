@@ -10,25 +10,38 @@ public class Aula {
     private String sumario;
     private Professor professor;
     private LinkedList<Aluno> alunos;
+    private Horario horario;
 
     //Construtores
-    public Aula(String nome, long numero, Professor professor, LinkedList<Aluno> alunos) {
+    public Aula(String nome, long numero, Horario horario,Professor professor, LinkedList<Aluno> alunos) {
         this.nome = nome;
         this.numero = numero;
         this.professor = professor;
+        if(this.professor != null) {
+            this.professor.adicionaAula(this);
+        }
         this.alunos = (alunos!=null) ? alunos : new LinkedList<>();
         for (Aluno aluno : alunos) {
             adicionar(aluno);
         }
         this.sumario = "";
+        this.horario = horario;
     }
 
     //Overload de construtores - this() deve apontar sempre para o contrutor com mais parametros
     public Aula (String nome, long numero) {
-        this(nome, numero, null, new LinkedList<>());
+        this(nome, numero, null,null, null);
+    }
+
+    public Aula (String nome, long numero, Horario horario) {
+        this(nome, numero, horario, null, new LinkedList<>());
     }
 
     //Métodos
+    public Horario getHorario() {
+        return horario;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -71,8 +84,8 @@ public class Aula {
             this.alunos = new LinkedList<>();
         }
         this.alunos.add(aluno);
-        //Ler Linha 88
-        //aluno.adicionar(this);
+        //Ver remover(Aluno aluno)
+        aluno.adicionar(this);
     }
 
     public void remover(Aluno aluno) {
@@ -86,7 +99,7 @@ public class Aula {
         }
         this.alunos.remove(aluno);
         //Chamada a função para garantir remoção da parte da Aula e do Aluno (Possivelmente não necessária na Ficha 2)
-        //aluno.remover(this);
+        aluno.remover(this);
     }
 
     public void setProfessor(Professor professor) {
