@@ -11,12 +11,12 @@ public class Main {
         Aula aula1 = new Aula("Aula1", 1);
         Aula aula2 = new Aula("Aula2", 2);
 
-        aula1.adicionarProfessor(professor1);
-        aula2.adicionarProfessor(professor2);
-        aula1.adicionarProfessor(professor2);
+        aula1.setProfessor(professor1);
+        aula2.setProfessor(professor2);
+        aula1.setProfessor(professor2);
 
-        aula1.adicionarAluno(aluno1);
-        aula1.adicionarAluno(aluno2);
+        aula1.adicionar(aluno1);
+        aula1.adicionar(aluno2);
 
         professor1.preencherSumario(aula1, "Aula de P2");
     }

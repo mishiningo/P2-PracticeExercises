@@ -25,8 +25,34 @@ public class Professor {
         return numero;
     }
 
-    public LinkedList<Aula> getAulas() {
-        return aulas;
+    public void setNumero(long numero) {
+        this.numero = numero;
+    }
+
+    public void adicionaAula(Aula aula) {
+        if(aula == null) {
+            return;
+        }
+        if(aulas.contains(aula)){
+            System.out.println("O professor já possui a aula!");
+            return;
+        }
+        if (aulas == null){
+            System.out.println("Lazy initialization!");
+            aulas = new LinkedList<>();
+        }
+        this.aulas.add(aula);
+    }
+
+    public void removeAula(Aula aula) {
+        if(aula == null) {
+            return;
+        }
+        if(!aulas.contains(aula)){
+            System.out.println("O professor não possui esta aula!");
+            return;
+        }
+        this.aulas.remove(aula);
     }
 
     public void preencherSumario(Aula aula, String sumario){
