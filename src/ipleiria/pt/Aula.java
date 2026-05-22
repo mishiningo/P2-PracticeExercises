@@ -2,11 +2,9 @@ package ipleiria.pt;
 
 import java.util.LinkedList;
 
-public class Aula {
+public class Aula extends Identificador {
 
     //Atributos
-    private String nome;
-    private long numero;
     private String sumario;
     private Professor professor;
     private LinkedList<Aluno> alunos;
@@ -14,8 +12,7 @@ public class Aula {
 
     //Construtores
     public Aula(String nome, long numero, Horario horario,Professor professor, LinkedList<Aluno> alunos) {
-        this.nome = nome;
-        this.numero = numero;
+        super(nome, numero);
         this.professor = professor;
         if(this.professor != null) {
             this.professor.adicionaAula(this);
@@ -40,18 +37,6 @@ public class Aula {
     //Métodos
     public Horario getHorario() {
         return horario;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public long getNumero() {
-        return numero;
-    }
-
-    public void setNumero(long numero) {
-        this.numero = numero;
     }
 
     public LinkedList<Aluno> getAlunos() {

@@ -3,33 +3,22 @@ package ipleiria.pt;
 import java.io.Serial;
 import java.util.LinkedList;
 
-public class Aluno {
+public class Aluno extends Identificador {
 
     //Atributos
-    private String nome;
-    private long numero;
+
+    //private String nome;  Atributos herdados
+    //private long numero;
+
     private LinkedList<Aula> aulas;
 
     //Construtores
     public Aluno(String nome, long numero) {
-        this.nome = nome;
-        this.numero = numero;
+        super(nome, numero);
         this.aulas = new LinkedList<>();
     }
 
     //Métodos
-
-    public String getNome() {
-        return nome;
-    }
-
-    public long getNumero() {
-        return numero;
-    }
-
-    public void setNumero(long numero) {
-        this.numero = numero;
-    }
 
     public void adicionar(Aula aula){
         if(aula==null || this.aulas.contains(aula)){

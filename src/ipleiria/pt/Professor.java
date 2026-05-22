@@ -2,33 +2,18 @@ package ipleiria.pt;
 
 import java.util.LinkedList;
 
-public class Professor {
+public class Professor extends Identificador {
 
     //Atributos
-    private String nome;
-    private long numero;
     private LinkedList<Aula> aulas;
 
     //Construtores
     public Professor(String nome, long numero) {
-        this.nome = nome;
-        this.numero = numero;
+        super(nome, numero);
         this.aulas = new LinkedList<>();
     }
 
     //Métodos
-    public String getNome() {
-        return nome;
-    }
-
-    public long getNumero() {
-        return numero;
-    }
-
-    public void setNumero(long numero) {
-        this.numero = numero;
-    }
-
     public void adicionaAula(Aula aula) {
         if(aula == null) {
             return;
