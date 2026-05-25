@@ -9,10 +9,13 @@ public class Aula extends Identificador {
     private Professor professor;
     private LinkedList<Aluno> alunos;
     private Horario horario;
+    private Sala sala;
 
     //Construtores
-    public Aula(String nome, long numero, Horario horario,Professor professor, LinkedList<Aluno> alunos) {
+    public Aula(String nome, long numero, Horario horario,Professor professor, LinkedList<Aluno> alunos, Sala sala) {
         super(nome, numero);
+        this.sala = sala;
+        sala.adicionarAula(this);
         this.professor = professor;
         if(this.professor != null) {
             this.professor.adicionaAula(this);
@@ -26,12 +29,12 @@ public class Aula extends Identificador {
     }
 
     //Overload de construtores - this() deve apontar sempre para o contrutor com mais parametros
-    public Aula (String nome, long numero) {
-        this(nome, numero, null,null, null);
+    public Aula (String nome, long numero, Sala sala) {
+        this(nome, numero, null,null, null, sala);
     }
 
-    public Aula (String nome, long numero, Horario horario) {
-        this(nome, numero, horario, null, new LinkedList<>());
+    public Aula (String nome, long numero, Horario horario, Sala sala) {
+        this(nome, numero, horario, null, new LinkedList<>(), sala);
     }
 
     //Métodos
@@ -103,5 +106,13 @@ public class Aula extends Identificador {
         }
         this.professor.removeAula(this);
         this.professor = null;
+    }
+
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
     }
 }

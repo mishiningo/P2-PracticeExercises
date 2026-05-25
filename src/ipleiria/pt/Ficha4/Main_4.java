@@ -1,3 +1,4 @@
+/*
 package ipleiria.pt.Ficha4;
 
 import ipleiria.pt.*;
@@ -21,3 +22,4 @@ public class Main_4 {
         aluno1.adicionar(aula1);
     }
 }
+*/

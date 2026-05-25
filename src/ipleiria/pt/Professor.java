@@ -6,11 +6,17 @@ public class Professor extends Identificador {
 
     //Atributos
     private LinkedList<Aula> aulas;
+    private GabineteProfessor gabineteProfessor;
+    private LinkedList<Horario> horariosAtendimento;
+
 
     //Construtores
-    public Professor(String nome, long numero) {
+    public Professor(String nome, long numero, GabineteProfessor gabineteProfessor) {
         super(nome, numero);
+        this.gabineteProfessor = gabineteProfessor;
+        gabineteProfessor.adicionarProfessores(this);
         this.aulas = new LinkedList<>();
+        horariosAtendimento = new LinkedList<>();
     }
 
     //Métodos
@@ -76,4 +82,58 @@ public class Professor extends Identificador {
         }
         return aulasHorario;
     }
+
+    public GabineteProfessor getGabinete() {
+        return gabineteProfessor;
+    }
+
+    public LinkedList<Horario> getHorariosAtendimento() {
+        return horariosAtendimento;
+    }
+
+    public void abrir(Sala sala){
+        if(sala == null){
+            return;
+        }
+        if(sala.isAberta()){
+            System.out.println("Sala já aberta!");
+        }
+        sala.setAberta(true);
+    }
+
+    public void abrirGabinete(){
+        if(this.gabineteProfessor.isAberta()){
+            System.out.println("Gabinete já aberto!");
+        }
+        this.gabineteProfessor.setAberta(true);
+    }
+
+    public void fechar(Sala sala){
+        if(sala == null){
+            return;
+        }
+        if(!sala.isAberta()){
+            System.out.println("Sala já fechada!");
+        }
+        sala.setAberta(false);
+    }
+
+    public void fecharGabinete(){
+        if(!this.gabineteProfessor.isAberta()){
+            System.out.println("Gabinete já fechado!");
+        }
+        this.gabineteProfessor.setAberta(false);
+    }
+
+    public void setGabineteProfessor(GabineteProfessor gabineteProfessor) {
+        this.gabineteProfessor = gabineteProfessor;
+    }
+
+    public void adicionar(Horario horarioAtendimento) {
+        if (horarioAtendimento == null){
+            return;
+        }
+        this.horariosAtendimento.add(horarioAtendimento);
+    }
+
 }

@@ -1,16 +1,11 @@
 package ipleiria.pt;
 
-public class Identificador {
+public class Identificador extends Descritor {
     protected long numero;
-    protected String nome;
 
     public Identificador(String nome, long numero) {
-        this.nome = nome;
+        super(nome);
         this.numero = numero;
-    }
-
-    public String getNome() {
-        return nome;
     }
 
     public long getNumero() {

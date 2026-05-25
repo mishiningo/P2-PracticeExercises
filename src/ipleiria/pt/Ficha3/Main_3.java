@@ -1,4 +1,4 @@
-package ipleiria.pt.Ficha3;
+/*package ipleiria.pt.Ficha3;
 import ipleiria.pt.*;
 
 import java.util.Arrays;
@@ -59,3 +59,4 @@ public class Main_3 {
         LinkedList<Aula> aulasAluno3TercaFeira = aluno3.getAulas(new Horario(DiaSemana.TERCA_FEIRA, 8, 16));
     }
 }
+*/
