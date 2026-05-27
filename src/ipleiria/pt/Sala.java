@@ -11,14 +11,6 @@ public class Sala extends Divisao {
         aulas = new LinkedList<>();
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public boolean isAberta() {
-        return aberta;
-    }
-
     public LinkedList<Aula> getAulas() {
         return aulas;
     }
@@ -31,10 +23,6 @@ public class Sala extends Divisao {
             }
         }
         return aulasHorario;
-    }
-
-    public void setAberta(boolean aberta) {
-        this.aberta = aberta;
     }
 
     public void adicionarAula(Aula aula) {

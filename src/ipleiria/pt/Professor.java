@@ -2,10 +2,8 @@ package ipleiria.pt;
 
 import java.util.LinkedList;
 
-public class Professor extends Identificador {
-
+public class Professor extends PessoaComAulas{
     //Atributos
-    private LinkedList<Aula> aulas;
     private GabineteProfessor gabineteProfessor;
     private LinkedList<Horario> horariosAtendimento;
 
@@ -15,34 +13,18 @@ public class Professor extends Identificador {
         super(nome, numero);
         this.gabineteProfessor = gabineteProfessor;
         gabineteProfessor.adicionarProfessores(this);
-        this.aulas = new LinkedList<>();
         horariosAtendimento = new LinkedList<>();
     }
 
     //Métodos
-    public void adicionaAula(Aula aula) {
-        if(aula == null) {
-            return;
-        }
-        if(aulas.contains(aula)){
-            System.out.println("O professor já possui a aula!");
-            return;
-        }
-        if (aulas == null){
-            System.out.println("Lazy initialization!");
-            aulas = new LinkedList<>();
-        }
+
+    @Override
+    public void associarAula(Aula aula){
         this.aulas.add(aula);
     }
 
-    public void removeAula(Aula aula) {
-        if(aula == null) {
-            return;
-        }
-        if(!aulas.contains(aula)){
-            System.out.println("O professor não possui esta aula!");
-            return;
-        }
+    @Override
+    public void desassociarAula(Aula aula) {
         this.aulas.remove(aula);
     }
 
@@ -63,24 +45,6 @@ public class Professor extends Identificador {
             aluno.assinarSumario(stringSumario);
         }
         aula.setSumario(stringSumario.toString());
-    }
-
-    public LinkedList<Aula> getAulas() {
-        return aulas;
-    }
-
-    //Overload de métodos também é uma cena
-    //Metodo pensado para devolver aulas que sobrepõem com a faixa de tempo dada
-    //Pelo utilizador, e não pelo tempo exato
-
-    public LinkedList<Aula> getAulas(Horario horario) {
-        LinkedList<Aula> aulasHorario = new LinkedList<>();
-        for(Aula aula : aulas) {
-            if(aula.getHorario().isSobreposto(horario)) {
-                aulasHorario.add(aula);
-            }
-        }
-        return aulasHorario;
     }
 
     public GabineteProfessor getGabinete() {
