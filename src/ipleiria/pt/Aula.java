@@ -73,7 +73,7 @@ public class Aula extends Identificador {
         }
         this.alunos.add(aluno);
         //Ver remover(Aluno aluno)
-        aluno.adicionar(this);
+        aluno.associarAula(this);
     }
 
     public void remover(Aluno aluno) {
@@ -87,7 +87,7 @@ public class Aula extends Identificador {
         }
         this.alunos.remove(aluno);
         //Chamada a função para garantir remoção da parte da Aula e do Aluno (Possivelmente não necessária na Ficha 2)
-        aluno.remover(this);
+        aluno.removeAula(this);
     }
 
     public void setProfessor(Professor professor) {
