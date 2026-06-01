@@ -2,18 +2,15 @@ package ipleiria.pt;
 
 import java.util.LinkedList;
 
-public class Professor extends PessoaComAulas{
+public class Professor extends PessoaComAulas implements Funcionario<GabineteProfessor,Sala>{
     //Atributos
-    private GabineteProfessor gabineteProfessor;
-    private LinkedList<Horario> horariosAtendimento;
+    GestorFuncionarios<GabineteProfessor,Sala> gestorFuncionarios;
 
 
     //Construtores
     public Professor(String nome, long numero, GabineteProfessor gabineteProfessor) {
         super(nome, numero);
-        this.gabineteProfessor = gabineteProfessor;
-        gabineteProfessor.adicionarProfessores(this);
-        horariosAtendimento = new LinkedList<>();
+        gestorFuncionarios = new GestorFuncionarios<>(this, gabineteProfessor);
     }
 
     //Métodos
@@ -47,57 +44,53 @@ public class Professor extends PessoaComAulas{
         aula.setSumario(stringSumario.toString());
     }
 
+    @Override
     public GabineteProfessor getGabinete() {
-        return gabineteProfessor;
+        return gestorFuncionarios.getGabinete();
     }
 
+    @Override
     public LinkedList<Horario> getHorariosAtendimento() {
-        return horariosAtendimento;
+        return gestorFuncionarios.getHorariosAtendimento();
     }
 
+    @Override
     public void abrir(Sala sala){
-        if(sala == null){
-            return;
-        }
-        if(sala.isAberta()){
-            System.out.println("Sala já aberta!");
-        }
-        sala.setAberta(true);
+        gestorFuncionarios.abrir(sala);
     }
 
+    @Override
     public void abrirGabinete(){
-        if(this.gabineteProfessor.isAberta()){
-            System.out.println("Gabinete já aberto!");
-        }
-        this.gabineteProfessor.setAberta(true);
+        gestorFuncionarios.abrirGabinete();
     }
 
+    @Override
     public void fechar(Sala sala){
-        if(sala == null){
-            return;
-        }
-        if(!sala.isAberta()){
-            System.out.println("Sala já fechada!");
-        }
-        sala.setAberta(false);
+       gestorFuncionarios.fechar(sala);
     }
 
+    @Override
     public void fecharGabinete(){
-        if(!this.gabineteProfessor.isAberta()){
-            System.out.println("Gabinete já fechado!");
-        }
-        this.gabineteProfessor.setAberta(false);
+        gestorFuncionarios.fecharGabinete();
     }
 
-    public void setGabineteProfessor(GabineteProfessor gabineteProfessor) {
-        this.gabineteProfessor = gabineteProfessor;
+    @Override
+    public void setGabinete(GabineteProfessor gabineteProfessor) {
+        gestorFuncionarios.setGabinete(gabineteProfessor);
     }
 
+    @Override
     public void adicionar(Horario horarioAtendimento) {
-        if (horarioAtendimento == null){
-            return;
-        }
-        this.horariosAtendimento.add(horarioAtendimento);
+        gestorFuncionarios.adicionar(horarioAtendimento);
     }
 
+    @Override
+    public void removeGabinete() {
+        gestorFuncionarios.removeGabinete();
+    }
+
+    @Override
+    public void remover(Horario horarioAtendimento) {
+        gestorFuncionarios.remover(horarioAtendimento);
+    }
 }

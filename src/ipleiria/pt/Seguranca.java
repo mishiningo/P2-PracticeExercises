@@ -2,77 +2,61 @@ package ipleiria.pt;
 
 import java.util.LinkedList;
 
-public class Seguranca extends Identificador{
-    private GabineteSeguranca gabinete;
-    private LinkedList<Horario> horariosAtendimento;
+public class Seguranca extends Identificador implements Funcionario<GabineteSeguranca, Divisao>{
+    private GestorFuncionarios<GabineteSeguranca, Divisao> gestorFuncionarios;
 
     public Seguranca(String nome, long numero, GabineteSeguranca gabinete) {
         super(nome,numero);
-        this.gabinete = gabinete;
-        gabinete.adicionar(this);
-        horariosAtendimento = new LinkedList<>();
+        gestorFuncionarios = new GestorFuncionarios<>(this, gabinete);
     }
 
+    @Override
     public GabineteSeguranca getGabinete() {
-        return gabinete;
+        return gestorFuncionarios.getGabinete();
     }
 
+    @Override
     public LinkedList<Horario> getHorariosAtendimento() {
-        return horariosAtendimento;
+        return gestorFuncionarios.getHorariosAtendimento();
     }
 
+    @Override
     public void abrir(Divisao divisao){
-        if(divisao == null){
-            return;
-        }
-        if(divisao.isAberta()){
-            System.out.println("Sala já aberta!");
-        }
-        divisao.setAberta(true);
+        gestorFuncionarios.abrir(divisao);
     }
 
+    @Override
     public void abrirGabinete(){
-        if(this.gabinete.isAberta()){
-            System.out.println("Gabinete já aberto!");
-        }
-        this.gabinete.setAberta(true);
+        gestorFuncionarios.abrirGabinete();
     }
 
+    @Override
     public void fechar(Divisao divisao){
-        if(divisao == null){
-            return;
-        }
-        if(!divisao.isAberta()){
-            System.out.println("Sala já fechada!");
-        }
-        divisao.setAberta(false);
+        gestorFuncionarios.fechar(divisao);
     }
 
-    public void fecharGabinete(GabineteSeguranca gabineteSeguranca){
-        if(!gabineteSeguranca.isAberta()){
-            System.out.println("Gabinete já fechado!");
-        }
-        gabineteSeguranca.setAberta(false);
+    @Override
+    public void fecharGabinete(){
+        gestorFuncionarios.fecharGabinete();
     }
 
+    @Override
     public void setGabinete(GabineteSeguranca gabinete) {
-        this.gabinete = gabinete;
-        gabinete.adicionar(this);
+        gestorFuncionarios.setGabinete(gabinete);
     }
 
+    @Override
     public void removeGabinete(){
-        this.gabinete = null;
-        gabinete.remover(this);
+        gestorFuncionarios.removeGabinete();
     }
 
+    @Override
     public void adicionar(Horario horarioAtendimento) {
-        if(horarioAtendimento == null){
-            return;
-        }
-        this.horariosAtendimento.add(horarioAtendimento);
+        gestorFuncionarios.adicionar(horarioAtendimento);
     }
 
+    @Override
     public void remover(Horario horarioAtendimento) {
-        this.horariosAtendimento = null;
+        gestorFuncionarios.remover(horarioAtendimento);
     }
 }
