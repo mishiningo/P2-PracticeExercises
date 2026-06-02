@@ -2,7 +2,6 @@ package ipleiria.pt.Ficha6;
 import ipleiria.pt.*;
 
 public class Main_6 {
-    public class Main {
 
         public static void main(String[] args) {
             System.out.println();
@@ -13,4 +12,3 @@ public class Main_6 {
         }
     }
 
-}
