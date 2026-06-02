@@ -18,7 +18,7 @@ public class Aula extends Identificador {
         sala.adicionarAula(this);
         this.professor = professor;
         if(this.professor != null) {
-            this.professor.adicionaAula(this);
+            this.professor.adicionarAula(this);
         }
         this.alunos = (alunos!=null) ? alunos : new LinkedList<>();
         for (Aluno aluno : alunos) {
@@ -87,7 +87,7 @@ public class Aula extends Identificador {
         }
         this.alunos.remove(aluno);
         //Chamada a função para garantir remoção da parte da Aula e do Aluno (Possivelmente não necessária na Ficha 2)
-        aluno.removeAula(this);
+        aluno.removerAula(this);
     }
 
     public void setProfessor(Professor professor) {
@@ -96,7 +96,7 @@ public class Aula extends Identificador {
             return;
         }
         this.professor = professor;
-        professor.adicionaAula(this);
+        professor.adicionarAula(this);
     }
 
     public void desassociarProfessor() {
@@ -104,7 +104,7 @@ public class Aula extends Identificador {
             System.out.println("Professor já não associado");
             return;
         }
-        this.professor.removeAula(this);
+        this.professor.removerAula(this);
         this.professor = null;
     }
 

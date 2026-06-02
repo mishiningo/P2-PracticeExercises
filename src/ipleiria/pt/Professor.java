@@ -5,24 +5,22 @@ import java.util.LinkedList;
 public class Professor extends PessoaComAulas implements Funcionario<GabineteProfessor,Sala>{
     //Atributos
     GestorFuncionarios<GabineteProfessor,Sala> gestorFuncionarios;
-
-
     //Construtores
     public Professor(String nome, long numero, GabineteProfessor gabineteProfessor) {
         super(nome, numero);
         gestorFuncionarios = new GestorFuncionarios<>(this, gabineteProfessor);
-    }
+       }
 
     //Métodos
 
     @Override
     public void associarAula(Aula aula){
-        this.aulas.add(aula);
+        aula.setProfessor(this);
     }
 
     @Override
     public void desassociarAula(Aula aula) {
-        this.aulas.remove(aula);
+        aula.desassociarProfessor();
     }
 
     public void preencherSumario(Aula aula, String sumario){

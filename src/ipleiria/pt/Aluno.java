@@ -14,13 +14,11 @@ public class Aluno extends PessoaComAulas {
 
     @Override
     public void associarAula(Aula aula){
-        this.aulas.add(aula);
         aula.adicionar(this);
     }
 
     @Override
     public void desassociarAula(Aula aula){
-        this.aulas.remove(aula);
         aula.remover(this);
     }
 
